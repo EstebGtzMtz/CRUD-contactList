@@ -1,13 +1,18 @@
+export interface IDataFromContacts{
+  data:IGetContactList
+}
+
 export interface IGetContactList {
   count: number,
   currentPage:number,
-  results: IContactsResulst[]
+  results: IContactsResults[]
 }
 
-export interface IContactsResulst {
-  id: string,
+export interface IContactsResults {
+  id?: string,
   firstName: string,
   lastName: string,
-  email: string,
+  email?: string,
   phone: string
 }
+
