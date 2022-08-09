@@ -23,7 +23,7 @@ const ContactList = () => {
     <Stack direction="column" className='header'>
       {
         contactList.map((el:IContactsResults)=>(
-          <ContactCard key={el.id} firstName={el.firstName} lastName={el.lastName} phone={el.phone}/>
+          <ContactCard key={el.id} id={el.id} firstName={el.firstName} lastName={el.lastName} phone={el.phone}/>
         ))
       }
       <div className='row-center-element'>

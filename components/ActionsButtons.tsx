@@ -1,10 +1,14 @@
 import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';;
+import DeleteIcon from '@mui/icons-material/Delete';import { IContactsResults } from '../interfaces/responses';
+import Link from 'next/link';
+;
 
-const ActionsButtons = () => {
+const ActionsButtons = ({id}:IContactsResults) => {
   return (
     <div className='contact-action-buttons'>
-      <EditIcon sx={{ fontSize: 40, color:'white' }} className='pointer-mouse'/>
+      <Link href={`UpdateContact/${id}`}>
+        <EditIcon sx={{ fontSize: 40, color:'white' }} className='pointer-mouse'/>
+      </Link>
       <DeleteIcon sx={{ fontSize: 40, color:'white' }} className='pointer-mouse' />
     </div>
   )
