@@ -6,7 +6,7 @@ import ActionsButtons from "../ActionsButtons";
 import { StyledBadge } from "./ContactCard.styled";
 
 
-const ContactCard = ({firstName, lastName='S', phone}:IContactsResults) => {
+const ContactCard = ({firstName, lastName='S', phone, id}:IContactsResults) => {
 
   return (
     <div className="contact-card-row">
@@ -29,7 +29,7 @@ const ContactCard = ({firstName, lastName='S', phone}:IContactsResults) => {
       </div>
       
       <div>
-        <ActionsButtons />
+        <ActionsButtons id={id}/>
       </div>
     </div>
   )

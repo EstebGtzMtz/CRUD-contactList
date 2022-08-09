@@ -10,9 +10,32 @@ export interface IGetContactList {
 
 export interface IContactsResults {
   id?: string,
+  firstName?: string,
+  lastName?: string,
+  email?: string,
+  phone?: string
+}
+
+export interface INewContactSubmit {
   firstName: string,
   lastName: string,
-  email?: string,
+  email: string,
   phone: string
 }
 
+export interface IDataFullResponse{
+  data?: IContactCompleteResponse
+  status?: number
+}
+export interface IContactCompleteResponse {
+  id?: string,
+  firstName?: string,
+  lastName?: string,
+  email?: string,
+  phone?: string,
+  message?:string
+}
+
+export interface IHeaderProps {
+  title:string
+}
