@@ -1,7 +1,7 @@
 
 import { Avatar, Divider } from "@mui/material";
 import { stringAvatar } from "../../helpers/functions";
-import { IContactsResults } from "../../interfaces/responses";
+import { IContactsResults } from "../../interfaces/interfaces";
 import ActionsButtons from "../ActionsButtons";
 import { StyledBadge } from "./ContactCard.styled";
 

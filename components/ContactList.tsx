@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { IContactsResults, IGetContactList } from '../interfaces/responses';
+import { IContactsResults, IGetContactList } from '../interfaces/interfaces';
 import { getContactsList } from '../services/ContactsServices';
 import ContactCard from './ContactCard/ContactCard';
 import Paginator from './Paginator';
@@ -10,14 +10,14 @@ const ContactList = () => {
   const [contactList, setContactList] = useState<IContactsResults[]>([])
 
   useEffect(() => {
+    const getContacts = async () => {
+      const {results}:IGetContactList = await getContactsList(78);
+      setContactList(results)
+    }
+    
     getContacts()
   }, [])
 
-  const getContacts = async () => {
-    const {results}:IGetContactList = await getContactsList(1);
-    console.log(results)
-    setContactList(results)
-  }
 
   return (
     <Stack direction="column" className='header'>

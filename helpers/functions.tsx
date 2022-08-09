@@ -17,12 +17,13 @@ export const stringToColor = (string: string) => {
   return color;
 }
 
-export const stringAvatar = (name: string) => {
+export const stringAvatar = (name: string, isEdit = false) => {
   return {
     sx: {
       bgcolor: stringToColor(name),
-      width: 70, 
-      height: 70
+      width: isEdit ? 150 : 70,
+      height: isEdit ? 150 : 70,
+      fontSize: isEdit ? 60 : 20,
     },
     children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
   };

@@ -25,8 +25,8 @@ export interface INewContactSubmit {
 
 export interface IDataFullResponse{
   data?: IContactCompleteResponse
-  status?: number
 }
+
 export interface IContactCompleteResponse {
   id?: string,
   firstName?: string,
@@ -38,4 +38,13 @@ export interface IContactCompleteResponse {
 
 export interface IHeaderProps {
   title:string
+}
+
+export interface IUserByID {
+  data: IContactsResults
+}
+
+export interface IContact{
+  contact: IContactsResults,
+  id:string
 }

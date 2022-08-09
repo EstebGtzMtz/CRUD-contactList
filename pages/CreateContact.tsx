@@ -1,7 +1,7 @@
 import { Alert, AlertTitle, Backdrop, Button, CircularProgress, Grid, Stack, TextField } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { INewContactSubmit } from "../interfaces/responses";
+import { INewContactSubmit } from "../interfaces/interfaces";
 import SendIcon from '@mui/icons-material/Send';
 import { EMAIL_REGEX, STRING_REGEX } from "../helpers/constants";
 import ErrorIcon from '@mui/icons-material/Error';
