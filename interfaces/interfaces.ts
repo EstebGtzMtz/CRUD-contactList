@@ -48,3 +48,8 @@ export interface IContact{
   contact: IContactsResults,
   id:string
 }
+
+export interface IAction {
+  type: string,
+  payload?: number
+}
