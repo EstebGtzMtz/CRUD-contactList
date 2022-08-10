@@ -5,6 +5,7 @@ export interface IDataFromContacts{
 export interface IGetContactList {
   count: number,
   currentPage:number,
+  perPage: number,
   results: IContactsResults[]
 }
 
@@ -51,5 +52,26 @@ export interface IContact{
 
 export interface IAction {
   type: string,
-  payload?: number
+  contactsArray: IContactsResults[]
+  currentPage: number
+  perPage: number
+}
+
+export interface IActionsTypes {
+  GET_ALL_CONTACTS: string,
+  CURRENT_PAGE?: string,
+  GET_CONTACT_BY_ID: string
+}
+
+
+export interface IContactsState {
+  contacts: IContacts
+}
+
+export interface IContacts {
+  fetching: boolean,
+  currentPage: number,
+  perPage: number,
+  contactsList: IContactsResults[]
+
 }

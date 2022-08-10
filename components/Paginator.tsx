@@ -1,9 +1,10 @@
 import { MenuItem, Pagination, Select, SelectChangeEvent, Stack } from '@mui/material'
 import { useState } from 'react'
-import { IGetContactList } from '../interfaces/interfaces'
+import { connect } from 'react-redux'
+import { IContactsState, IGetContactList } from '../interfaces/interfaces'
 import { getContactsList } from '../services/ContactsServices'
 
-const Paginator = () => {
+const Paginator = ({currentPage}: IContacts) => {
   const [perPage, setPerPage] = useState('10');
 
   // const getContacts = async (page = 78) => {
@@ -19,8 +20,8 @@ const Paginator = () => {
 
   const getContactsByPage = async (event: React.ChangeEvent<unknown>, page: number) => {
     console.log(page)
-    const {results}:IGetContactList = await getContactsList(page);
-    console.log(results)
+    // const {results}:IGetContactList = await getContactsList(page);
+    // console.log(results)
   }
 
   return (
@@ -40,4 +41,10 @@ const Paginator = () => {
   )
 }
 
-export default Paginator
+const mapStateToProps = (state:IContactsState) => {
+  return {
+    currentPage: state.contacts.currentPage
+  }
+}
+
+export default connect(mapStateToProps)(Paginator) 

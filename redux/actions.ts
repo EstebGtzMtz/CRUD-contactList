@@ -1,11 +1,21 @@
-import { GET_ALL_CONTACTS } from "./types"
-import {Dispatch} from 'redux';
+import {ActionTypes} from './types'
+import { service } from "../services/ContactsServices";
+import { IDataFromContacts, IUserByID } from '../interfaces/interfaces';
 
-export const getAllContacts = (id: string)=>{
-  return (dispatch: Dispatch) => {
-    dispatch({
-      type: GET_ALL_CONTACTS,
-      payload: id
-    })
-  }
+const baseURL:string = '/contacts'
+
+export const getAllContacts = ( page=1, perPage=20):any => async (dispatch:any, getState: any)=> {
+  const {data}: IDataFromContacts = await service.get(`${baseURL}?page=${page}&perPage=${perPage}`);
+  dispatch({
+    type: ActionTypes.GET_ALL_CONTACTS, 
+    contactsArray: data.results, 
+    currentPage: data.currentPage,
+    perPage: data.perPage
+  })
+}
+
+export const getContactById = (id: number):any=> async (dispatch:any)=> {
+  const {data}: IUserByID = await service.get(`/contacts/${id}`);
+  // console.log(data, `${ActionTypes.GET_CONTACT_BY_ID}`)
+  dispatch({type: ActionTypes.GET_CONTACT_BY_ID, payload: data});
 }

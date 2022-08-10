@@ -3,14 +3,12 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
 import EditContactForm from '../../components/EditContact/EditContactForm';
 import EditContactHeader from '../../components/EditContact/EditContactHeader';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { IContactsResults } from '../../interfaces/interfaces';
 import { getContactById } from '../../services/ContactsServices';
 
 const UpdateContact = () => {
   const router = useRouter()
   const { id } = router.query;
-  const [user,setUser] = useLocalStorage('user', '')
   const [contact, setContact] = useState<IContactsResults>({})
 
   
@@ -18,7 +16,6 @@ const UpdateContact = () => {
     const getUserById = async (id:string) => {
       const res = await getContactById(id);
       setContact(res)
-      await setUser(res)
     }
     id !== undefined && getUserById(String(id));
   }, [id])

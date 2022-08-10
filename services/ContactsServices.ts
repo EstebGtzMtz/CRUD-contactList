@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { IDataFromContacts, IDataFullResponse, INewContactSubmit, IUserByID } from '../interfaces/interfaces';
 
-const baseURL: string = 'https://bkbnchallenge.herokuapp.com';
+export const baseURL: string = 'https://bkbnchallenge.herokuapp.com';
 
-const service = axios.create({
+export const service = axios.create({
   baseURL
 });
 
-export const getContactsList = async (page:number, perPage='20') => {
-  const {data}: IDataFromContacts = await service.get(`${baseURL}/contacts?page=${page}&perPage=${perPage}`);
-  return data;
+export const getContactsList = async (page:number, perPage:number) => {
+    const {data}: IDataFromContacts = await service.get(`${baseURL}/contacts?page=${page}&perPage=${perPage}`);
+    return data;
 }
 
 export const createNewContact = async (newContact:INewContactSubmit) => {

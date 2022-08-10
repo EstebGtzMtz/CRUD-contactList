@@ -1,5 +1,18 @@
-import {configureStore} from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit';
+import { service } from '../services/ContactsServices';
+import { getAllContacts } from './actions';
+import reducers from './reducers';
 
-export const store = configureStore({
-  reducer: {}
-})
+export const generateStore = () => {
+  const store = configureStore({
+    reducer:reducers,
+    middleware:getDefaultMiddleware => 
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: service
+        }
+      })
+  })
+  getAllContacts()(store.dispatch, store.getState)
+  return store;
+}

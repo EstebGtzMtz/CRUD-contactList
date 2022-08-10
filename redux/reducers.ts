@@ -1,15 +1,26 @@
 import { IAction, IDataFromContacts } from "../interfaces/interfaces";
 import {combineReducers} from 'redux'
+import { ActionTypes } from "./types";
 
-let initialStateContacts: IDataFromContacts
+const initialState = {
+  fetching: false,
+  contactsList:[],
+  currentPage:1,
+  perPage: 1
+}
 
-const contactReducer = (state:IDataFromContacts, action: IAction) => {
+const contactReducer = (state = initialState, action: IAction) => {
   switch (action.type) {
-    case 'GET_ALL_CONTACTS':
-        return state;
+    case ActionTypes.GET_ALL_CONTACTS:
+        return {
+          ...state, 
+          contactsList: action.contactsArray, 
+          currentPage: action.currentPage,
+          perPage: action.perPage
+        }
       break;
     default:
-      return state
+      return {...state}
   }
 }
 
