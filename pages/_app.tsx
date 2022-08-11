@@ -1,9 +1,10 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app';
-import {generateStore} from '../redux/store'
+// import {generateStore} from '../redux/store'
 import { Provider } from 'react-redux';
+import { store } from '../redux/store';
 
-const store = generateStore()
+// const store = generateStore()
 
 function MyApp({ Component, pageProps }: AppProps) {
   return  (

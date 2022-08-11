@@ -3,8 +3,8 @@ import { service } from '../services/ContactsServices';
 import { getAllContacts } from './actions';
 import reducers from './reducers';
 
-export const generateStore = () => {
-  const store = configureStore({
+// export const generateStore = () => {
+  export const store = configureStore({
     reducer:reducers,
     middleware:getDefaultMiddleware => 
       getDefaultMiddleware({
@@ -13,6 +13,6 @@ export const generateStore = () => {
         }
       })
   })
-  getAllContacts()(store.dispatch, store.getState)
-  return store;
-}
+  // getAllContacts()(store.dispatch, store.getState)
+  // return store;
+// }

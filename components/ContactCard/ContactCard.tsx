@@ -3,8 +3,6 @@ import { Avatar, Divider } from "@mui/material";
 import { stringAvatar } from "../../helpers/functions";
 import { IContactsResults } from "../../interfaces/interfaces";
 import ActionsButtons from "../ActionsButtons";
-import { StyledBadge } from "./ContactCard.styled";
-
 
 const ContactCard = ({firstName, lastName='S', phone, id}:IContactsResults) => {
 
@@ -12,13 +10,7 @@ const ContactCard = ({firstName, lastName='S', phone, id}:IContactsResults) => {
     <div className="contact-card-row">
       <div className="contact-card-row-photo-info">
         <div className="menu-icon">
-          <StyledBadge
-            overlap="circular"
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-            variant="dot"
-          >
-            <Avatar {...stringAvatar(`${firstName} ${lastName}`)} />
-          </StyledBadge>
+          <Avatar {...stringAvatar(`${firstName} ${lastName}`)} />
         </div>
         <div className="contact-card-row-info">
           <h3>{firstName}</h3>
@@ -27,7 +19,6 @@ const ContactCard = ({firstName, lastName='S', phone, id}:IContactsResults) => {
           </h4>
         </div>
       </div>
-      
       <div>
         <ActionsButtons id={id}/>
       </div>

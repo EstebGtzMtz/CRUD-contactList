@@ -1,6 +1,7 @@
 import { IAction, IDataFromContacts } from "../interfaces/interfaces";
 import {combineReducers} from 'redux'
 import { ActionTypes } from "./types";
+import { FaceRetouchingNatural } from "@mui/icons-material";
 
 const initialState = {
   fetching: false,
@@ -14,11 +15,22 @@ const contactReducer = (state = initialState, action: IAction) => {
     case ActionTypes.GET_ALL_CONTACTS:
         return {
           ...state, 
-          contactsList: action.contactsArray, 
-          currentPage: action.currentPage,
-          perPage: action.perPage
+          fetching: true
         }
       break;
+    case ActionTypes.GET_ALL_CONTACTS_SUCCESS:
+      return {
+        contactsList: action.contactsArray, 
+          currentPage: action.currentPage,
+          perPage: action.perPage,
+          fetching: action.fetching
+      }
+      break;
+    case ActionTypes.DELETE_CONTACT_BY_ID:
+      return{ 
+        ...state,
+        contactsList: action.contactsArray
+      }
     default:
       return {...state}
   }

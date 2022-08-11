@@ -11,10 +11,12 @@ import Header from "../Header";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { deleteUserById, updateUserById } from "../../services/ContactsServices";
+import { useActions } from "../../hooks/useActions";
 
 
 const EditContactForm = (props:IContact) => {
 
+  const action = useActions({deleteUserById},[])
   const [open, setOpen] = useState(false);
   const { register, reset,handleSubmit, formState: { errors } } = useForm<INewContactSubmit>({
     defaultValues:useMemo(() => {
@@ -32,10 +34,10 @@ const EditContactForm = (props:IContact) => {
     setOpen(false);
   }
 
-  const deleteContactById = async () => {
-    const res = await deleteUserById(props.id);
-    console.log(res)
-  }
+  // const deleteContactById = async () => {
+  //   const res = await deleteUserById(props.id);
+  //   console.log(res)
+  // }
 
   const handleClose = () => {
     setOpen(false);
@@ -104,7 +106,7 @@ const EditContactForm = (props:IContact) => {
               Save
             </Button>
             <Link href="/">
-              <Button onClick={deleteContactById} variant="contained" color="error" size='large' endIcon={<DeleteIcon />}>
+              <Button onClick={action.deleteContactById} variant="contained" color="error" size='large' endIcon={<DeleteIcon />}>
                 Delete
               </Button>
             </Link>

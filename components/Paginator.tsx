@@ -1,7 +1,7 @@
 import { MenuItem, Pagination, Select, SelectChangeEvent, Stack } from '@mui/material'
 import { useState } from 'react'
 import { connect } from 'react-redux'
-import { IContactsState, IGetContactList } from '../interfaces/interfaces'
+import { IContacts, IContactsState, IGetContactList } from '../interfaces/interfaces'
 import { getContactsList } from '../services/ContactsServices'
 
 const Paginator = ({currentPage}: IContacts) => {

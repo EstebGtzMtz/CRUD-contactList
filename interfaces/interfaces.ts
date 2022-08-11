@@ -55,12 +55,15 @@ export interface IAction {
   contactsArray: IContactsResults[]
   currentPage: number
   perPage: number
+  fetching: boolean
 }
 
 export interface IActionsTypes {
   GET_ALL_CONTACTS: string,
   CURRENT_PAGE?: string,
-  GET_CONTACT_BY_ID: string
+  GET_CONTACT_BY_ID: string,
+  DELETE_CONTACT_BY_ID:string,
+  GET_ALL_CONTACTS_SUCCESS: string
 }
 
 
