@@ -11,17 +11,17 @@ export interface IGetContactList {
 
 export interface IContactsResults {
   id?: string,
-  firstName?: string,
+  firstName?: string | undefined,
   lastName?: string,
   email?: string,
   phone?: string
 }
 
 export interface INewContactSubmit {
-  firstName: string,
-  lastName: string,
-  email: string,
-  phone: string
+  firstName?: string | undefined,
+  lastName?: string | undefined,
+  email?: string,
+  phone?: string
 }
 
 export interface IDataFullResponse{
@@ -63,7 +63,8 @@ export interface IActionsTypes {
   CURRENT_PAGE?: string,
   GET_CONTACT_BY_ID: string,
   DELETE_CONTACT_BY_ID:string,
-  GET_ALL_CONTACTS_SUCCESS: string
+  GET_ALL_CONTACTS_SUCCESS: string,
+  UPDATE_CONTACT_BY_ID: string
 }
 
 
@@ -77,4 +78,12 @@ export interface IContacts {
   perPage: number,
   contactsList: IContactsResults[]
 
+}
+
+
+export interface IContactFormProps {
+  contact?: INewContactSubmit,
+  deleteUserById?: any,
+  updateUserById?:any,
+  id: string
 }

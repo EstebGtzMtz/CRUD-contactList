@@ -1,10 +1,10 @@
 import {ActionTypes} from './types'
 import { service } from "../services/ContactsServices";
-import { IContacts, IDataFromContacts, IUserByID } from '../interfaces/interfaces';
+import { IDataFromContacts, INewContactSubmit, IUserByID } from '../interfaces/interfaces';
 
 const baseURL:string = '/contacts'
 
-export const getAllContacts = ( page=1, perPage=20):any => async (dispatch:any)=> {
+export const getAllContacts = ( page=150, perPage=10):any => async (dispatch:any)=> {
   try {
     dispatch({
       type:ActionTypes.GET_ALL_CONTACTS
@@ -22,23 +22,24 @@ export const getAllContacts = ( page=1, perPage=20):any => async (dispatch:any)=
   }
 }
 
-export const deleteUserById = (id:string, page=78, perPage=5) => async (dispatch:any, getState:IContacts) => {
-  console.log(getState)
+export const deleteUserById = (id:string) => async (dispatch:any) => {
   try {
-    await service.delete(`${baseURL}/contacts/${id}`);
-    const {data}: IDataFromContacts = await service.get(`${baseURL}?page=${page}&perPage=${perPage}`);
+    await service.delete(`${baseURL}/${id}`);
     dispatch({
       type: ActionTypes.DELETE_CONTACT_BY_ID,
-      contacstArray: data.results
     })
   } catch (error) {
-    
+    console.log({error})
   }
-
 }
 
-export const getContactById = (id: number):any=> async (dispatch:any)=> {
-  const {data}: IUserByID = await service.get(`/contacts/${id}`);
-  // console.log(data, `${ActionTypes.GET_CONTACT_BY_ID}`)
-  dispatch({type: ActionTypes.GET_CONTACT_BY_ID, payload: data});
+export const updateUserById = (id:string, infoToUpdate: INewContactSubmit ) => async (dispatch: any) => {
+  try {
+    await service.put(`${baseURL}/${id}`, infoToUpdate);
+    dispatch({
+      type: ActionTypes.UPDATE_CONTACT_BY_ID,
+    })
+  } catch (error) {
+    console.log(error)
+  }
 }

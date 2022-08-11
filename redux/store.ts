@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { service } from '../services/ContactsServices';
-import { getAllContacts } from './actions';
 import reducers from './reducers';
 
 // export const generateStore = () => {

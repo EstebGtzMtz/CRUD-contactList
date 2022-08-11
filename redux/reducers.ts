@@ -12,24 +12,21 @@ const initialState = {
 
 const contactReducer = (state = initialState, action: IAction) => {
   switch (action.type) {
+    case ActionTypes.UPDATE_CONTACT_BY_ID:
+      return {...state}
+    case ActionTypes.DELETE_CONTACT_BY_ID:
+      return {...state};
     case ActionTypes.GET_ALL_CONTACTS:
         return {
           ...state, 
           fetching: true
         }
-      break;
     case ActionTypes.GET_ALL_CONTACTS_SUCCESS:
       return {
         contactsList: action.contactsArray, 
           currentPage: action.currentPage,
           perPage: action.perPage,
           fetching: action.fetching
-      }
-      break;
-    case ActionTypes.DELETE_CONTACT_BY_ID:
-      return{ 
-        ...state,
-        contactsList: action.contactsArray
       }
     default:
       return {...state}

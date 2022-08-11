@@ -1,4 +1,5 @@
 import { Backdrop, Button, CircularProgress, Grid, Stack, TextField } from "@mui/material";
+import { connect } from "react-redux";
 import ErrorIcon from '@mui/icons-material/Error';
 import SendIcon from '@mui/icons-material/Send';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -6,38 +7,36 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Box, Container } from "@mui/system";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { EMAIL_REGEX, STRING_REGEX } from "../../helpers/constants";
-import { IContact, INewContactSubmit } from "../../interfaces/interfaces";
+import { IContactFormProps, INewContactSubmit } from "../../interfaces/interfaces";
 import Header from "../Header";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { deleteUserById, updateUserById } from "../../services/ContactsServices";
-import { useActions } from "../../hooks/useActions";
+import {deleteUserById, updateUserById} from '../../redux/actions';
 
 
-const EditContactForm = (props:IContact) => {
+const EditContactForm = ({deleteUserById, updateUserById, contact, id}:IContactFormProps) => {
 
-  const action = useActions({deleteUserById},[])
   const [open, setOpen] = useState(false);
   const { register, reset,handleSubmit, formState: { errors } } = useForm<INewContactSubmit>({
     defaultValues:useMemo(() => {
-      return props.contact;
-    }, [props])
+      return contact;
+    }, [contact])
   });
 
   useEffect(() => {
-    reset(props.contact);
-  }, [props.contact]);
+    reset(contact);
+  }, [contact]);
 
-  const onSubmit: SubmitHandler<INewContactSubmit> = async data => {
+  const onSubmit: SubmitHandler<INewContactSubmit> = data => {
+    console.log('al menos entra')
     setOpen(true);
-    await updateUserById(props.id, data);
+    updateUserById(id, data);
     setOpen(false);
   }
 
-  // const deleteContactById = async () => {
-  //   const res = await deleteUserById(props.id);
-  //   console.log(res)
-  // }
+  const deleteContactById = () => {
+    deleteUserById(id);
+  }
 
   const handleClose = () => {
     setOpen(false);
@@ -102,11 +101,11 @@ const EditContactForm = (props:IContact) => {
                 Cancel
               </Button>
             </Link>
-            <Button type='submit' variant="contained" size='large' endIcon={<SendIcon />}>
-              Save
-            </Button>
+              <Button type="submit" variant="contained" size='large' endIcon={<SendIcon />}>
+                Save
+              </Button>
             <Link href="/">
-              <Button onClick={action.deleteContactById} variant="contained" color="error" size='large' endIcon={<DeleteIcon />}>
+              <Button onClick={()=>deleteContactById()} variant="contained" color="error" size='large' endIcon={<DeleteIcon />}>
                 Delete
               </Button>
             </Link>
@@ -125,4 +124,10 @@ const EditContactForm = (props:IContact) => {
   )
 }
 
-export default EditContactForm
+const mapStateToProps = (state:any) => {
+  return state;
+}
+
+
+
+export default connect(mapStateToProps, {deleteUserById, updateUserById})(EditContactForm)
