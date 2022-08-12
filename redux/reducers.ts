@@ -1,7 +1,6 @@
-import { IAction, IDataFromContacts } from "../interfaces/interfaces";
+import { IAction} from "../interfaces/interfaces";
 import {combineReducers} from 'redux'
 import { ActionTypes } from "./types";
-import { FaceRetouchingNatural } from "@mui/icons-material";
 
 const initialState = {
   fetching: false,

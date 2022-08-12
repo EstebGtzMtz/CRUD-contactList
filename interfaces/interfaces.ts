@@ -92,3 +92,7 @@ export interface IContactFormProps {
   updateUserById?:any,
   id: string
 }
+
+export interface IUpdateContactProps{
+  getContactById: any
+}

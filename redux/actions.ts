@@ -23,7 +23,7 @@ export const getAllContacts = ( page=1):any => async (dispatch:any)=> {
   }
 }
 
-export const getContactById = (id:string|undefined) => async(dispatch:any) => {
+export const getContactById = (id='628aa513cfe289001693fb7d') => async(dispatch:any) => {
   try {
     const {data}: IUserByID = await service.get(`${baseURL}/${id}`);
     dispatch({

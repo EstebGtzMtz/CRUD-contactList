@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EditContactForm from '../../components/EditContact/EditContactForm';
 import EditContactHeader from '../../components/EditContact/EditContactHeader';
-import { IContactsResults, IContactsState } from '../../interfaces/interfaces';
+import { IContactsState } from '../../interfaces/interfaces';
 import {getContactById} from '../../redux/actions';
 
 const UpdateContact = () => {
@@ -17,7 +17,7 @@ const UpdateContact = () => {
   useEffect(() => {
     dispatch(getContactById(String(id)))
   }, [id])
-  
+
   const handleClose = () => {
     setOpen(false);
   };

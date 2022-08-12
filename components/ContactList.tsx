@@ -1,6 +1,6 @@
 import { Backdrop, CircularProgress, Stack } from '@mui/material';
 import {  useDispatch } from 'react-redux';
-import { IContacts, IContactsResults, IContactsState, IGetContactList } from '../interfaces/interfaces';
+import { IContactsResults, IContactsState } from '../interfaces/interfaces';
 import ContactCard from './ContactCard/ContactCard';
 import Paginator from './Paginator';
 import { useSelector } from 'react-redux'
