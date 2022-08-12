@@ -14,7 +14,7 @@ const Paginator = () => {
 
   return (
     <Stack spacing={2}>
-      <Pagination count={totalPages} variant="outlined" color="secondary" size='large' onChange={getContactsByPage}/>
+      <Pagination count={totalPages ? totalPages : 1} defaultPage={currentPage ? currentPage : 1} variant="outlined" color="secondary" size='large' onChange={getContactsByPage}/>
     </Stack>
   )
 }

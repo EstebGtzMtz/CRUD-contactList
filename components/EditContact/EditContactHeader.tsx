@@ -16,9 +16,6 @@ const EditContactHeader = ({firstName, lastName, email}: IContactsResults) => {
           {email}
         </h4>
       </Grid>
-      <Grid>
-        que onda
-      </Grid>
     </Grid>
   )
 }

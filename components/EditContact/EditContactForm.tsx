@@ -27,7 +27,6 @@ const EditContactForm = ({deleteUserById, updateUserById, contact, id}:IContactF
   }, [contact]);
 
   const onSubmit: SubmitHandler<INewContactSubmit> = data => {
-    console.log('al menos entra')
     setOpen(true);
     updateUserById(id, data);
     setOpen(false);

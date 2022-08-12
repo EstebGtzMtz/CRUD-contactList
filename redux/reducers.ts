@@ -36,7 +36,8 @@ const contactReducer = (state = initialState, action: IAction) => {
         contactsList: action.contactsArray, 
           currentPage: action.currentPage,
           perPage: action.perPage,
-          fetching: action.fetching
+          fetching: action.fetching,
+          totalPages: action.totalPages
       }
     default:
       return {...state}
