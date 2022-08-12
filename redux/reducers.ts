@@ -18,8 +18,6 @@ const contactReducer = (state = initialState, action: IAction) => {
         ...state,
         currentContact: action.currentContact
       }
-    // case GET_CONTACT_BY_ID_SUCCESS:
-    //   return{}
     case ActionTypes.GET_CONTACT_BY_ID:
       return {
         ...state,

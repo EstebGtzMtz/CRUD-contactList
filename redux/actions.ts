@@ -4,7 +4,7 @@ import { IDataFromContacts, INewContactSubmit, IUserByID } from '../interfaces/i
 
 const baseURL:string = '/contacts'
 
-export const getAllContacts = ( page=150, perPage=10):any => async (dispatch:any)=> {
+export const getAllContacts = ( page=1, perPage=10):any => async (dispatch:any)=> {
   try {
     dispatch({
       type:ActionTypes.GET_ALL_CONTACTS
@@ -24,9 +24,6 @@ export const getAllContacts = ( page=150, perPage=10):any => async (dispatch:any
 
 export const getContactById = (id:string|undefined) => async(dispatch:any) => {
   try {
-    // dispatch({
-    //   type:ActionTypes.GET_CONTACT_BY_ID
-    // })
     const {data}: IUserByID = await service.get(`${baseURL}/${id}`);
     dispatch({
       type: ActionTypes.GET_CONTACT_BY_ID,
