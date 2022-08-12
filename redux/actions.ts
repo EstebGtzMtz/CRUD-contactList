@@ -4,18 +4,19 @@ import { IDataFromContacts, INewContactSubmit, IUserByID } from '../interfaces/i
 
 const baseURL:string = '/contacts'
 
-export const getAllContacts = ( page=1, perPage=10):any => async (dispatch:any)=> {
+export const getAllContacts = ( page=1):any => async (dispatch:any)=> {
   try {
     dispatch({
       type:ActionTypes.GET_ALL_CONTACTS
     })
-    const {data}: IDataFromContacts = await service.get(`${baseURL}?page=${page}&perPage=${perPage}`);
+    const {data}: IDataFromContacts = await service.get(`${baseURL}?page=${page}`);
     dispatch({
       type: ActionTypes.GET_ALL_CONTACTS_SUCCESS, 
       contactsArray: data.results, 
       currentPage: data.currentPage,
       perPage: data.perPage,
-      fetching: false
+      fetching: false,
+      totalPages: data.totalPages
     }) 
   } catch (error) {
     console.log(error)

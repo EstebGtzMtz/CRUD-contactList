@@ -11,12 +11,13 @@ const ContactList = () => {
   
   const dispatch = useDispatch()
   const [open, setOpen] = useState(false);
-  const contactsList = useSelector((state:any) => state?.contacts.contactsList);
-  const isFetching = useSelector((state:any) => state?.contacts.fetching)
+  const contactsList = useSelector((state:IContactsState) => state?.contacts.contactsList);
+  const isFetching = useSelector((state:IContactsState) => state?.contacts.fetching)
+  const currentPage = useSelector((state:IContactsState) => state?.contacts.currentPage);
 
   useEffect(() => {
     setOpen(true)
-    dispatch(getAllContacts())
+    dispatch(getAllContacts(currentPage))
     setOpen(false)
   }, [])
   

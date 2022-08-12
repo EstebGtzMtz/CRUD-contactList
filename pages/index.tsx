@@ -7,10 +7,10 @@ const index = () => {
   return (
     <Container maxWidth="xl">
       <Grid container spacing={2}>
-        <Grid item xs={12} md={12} lg={12} style={{backgroundColor: 'aqua'}}>
-          <Header title='Contact List'/>
+        <Grid item xs={12} md={12} lg={12}>
+          <Header title='CONTACT LIST'/>
         </Grid>
-        <Grid item xs={12} md={12} lg={12} style={{backgroundColor: 'aliceblue'}}>
+        <Grid item xs={12} md={12} lg={12}>
           <ContactList />
         </Grid>
       </Grid>

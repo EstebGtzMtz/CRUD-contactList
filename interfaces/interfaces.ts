@@ -7,6 +7,7 @@ export interface IGetContactList {
   currentPage:number,
   perPage: number,
   results: IContactsResults[]
+  totalPages?: number
 }
 
 export interface IContactsResults {
@@ -57,6 +58,7 @@ export interface IAction {
   perPage: number
   fetching: boolean
   currentContact: IContactsResults
+  totalPages: number
 }
 
 export interface IActionsTypes {
@@ -78,8 +80,9 @@ export interface IContacts {
   fetching: boolean,
   currentPage: number,
   perPage: number,
+  totalPages: number,
   contactsList: IContactsResults[]
-
+  currentContact?: IContactsResults
 }
 
 

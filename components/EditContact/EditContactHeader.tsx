@@ -4,7 +4,7 @@ import { IContactsResults } from '../../interfaces/interfaces';
 
 const EditContactHeader = ({firstName, lastName, email}: IContactsResults) => {
   return (
-    <Grid spacing={2} className="user-icon-edit">
+    <Grid className="user-icon-edit">
       <Grid item xs={4} sm={3} md={2} lg={2}>
         <Avatar {...stringAvatar(`${firstName} ${lastName}`, true)} variant='rounded' />
       </Grid>
@@ -15,6 +15,9 @@ const EditContactHeader = ({firstName, lastName, email}: IContactsResults) => {
         <h4>
           {email}
         </h4>
+      </Grid>
+      <Grid>
+        que onda
       </Grid>
     </Grid>
   )

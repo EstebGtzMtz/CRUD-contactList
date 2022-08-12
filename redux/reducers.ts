@@ -8,7 +8,8 @@ const initialState = {
   contactsList:[],
   currentPage:1,
   perPage: 1,
-  currentContact: {}
+  currentContact: {},
+  totalPages:0
 }
 
 const contactReducer = (state = initialState, action: IAction) => {

@@ -1,13 +1,14 @@
-import { Alert, AlertTitle, Backdrop, Button, CircularProgress, Grid, Stack, TextField } from "@mui/material";
+import { Alert, AlertTitle, Avatar, Backdrop, Button, CircularProgress, Grid, Link as MaterialUILink, Stack, TextField } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { INewContactSubmit } from "../interfaces/interfaces";
-import SendIcon from '@mui/icons-material/Send';
-import { EMAIL_REGEX, STRING_REGEX } from "../helpers/constants";
-import ErrorIcon from '@mui/icons-material/Error';
 import { createNewContact } from "../services/ContactsServices";
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
+import { EMAIL_REGEX, STRING_REGEX } from "../helpers/constants";
+import SendIcon from '@mui/icons-material/Send';
+import ErrorIcon from '@mui/icons-material/Error';
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import Link from "next/link";
 
 const CreateContact = () => {
 
@@ -34,15 +35,15 @@ const CreateContact = () => {
 
   return (
     <Container maxWidth="xl" className='center-form'>
+      <Avatar sx={{ m: 5, bgcolor: 'secondary.main',width: 56, height: 56 }}>
+        <PersonAddAlt1Icon />
+      </Avatar>
       <Stack direction="column" className='header'>
-        <Grid item xs={12} md={12} lg={12}>
-          <Header title='Add new contact'/>
-        </Grid>
         <Box
-        sx={{
-          width: 500,
-          maxWidth: '100%',
-        }}
+          sx={{
+            width: 500,
+            maxWidth: '100%',
+          }}
       >
         <form onSubmit={handleSubmit(onSubmit)}>          
           <TextField 
@@ -92,9 +93,23 @@ const CreateContact = () => {
             })} />
             {errors.phone && <span className="show-error">Type a valid phone number</span>}
           <div>
-            <Button type='submit' variant="contained" size='large' endIcon={<SendIcon />}>
-              Save
+            <Button 
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }} 
+              endIcon={<SendIcon />}>
+              Create New Contact
             </Button>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <Link href="/">
+                  <MaterialUILink href="#" variant="body2">
+                    GO BACK TO CONTACT LIST
+                  </MaterialUILink>
+                </Link>
+              </Grid>
+            </Grid>
             <Backdrop
               sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
               open={open}

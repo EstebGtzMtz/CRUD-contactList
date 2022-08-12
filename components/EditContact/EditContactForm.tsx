@@ -2,13 +2,12 @@ import { Backdrop, Button, CircularProgress, Grid, Stack, TextField } from "@mui
 import { connect } from "react-redux";
 import ErrorIcon from '@mui/icons-material/Error';
 import SendIcon from '@mui/icons-material/Send';
-import CancelIcon from '@mui/icons-material/Cancel';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Box, Container } from "@mui/system";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { EMAIL_REGEX, STRING_REGEX } from "../../helpers/constants";
 import { IContactFormProps, INewContactSubmit } from "../../interfaces/interfaces";
-import Header from "../Header";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {deleteUserById, updateUserById} from '../../redux/actions';
@@ -45,9 +44,6 @@ const EditContactForm = ({deleteUserById, updateUserById, contact, id}:IContactF
   return (
     <Container className='center-edit-form'>
       <Stack direction="column" className='header'>
-        <Grid item xs={12} md={12} lg={12}>
-          <Header title='Edit Contact Info'/>
-        </Grid>
         <Box
           sx={{
             width: 500,
@@ -97,11 +93,11 @@ const EditContactForm = ({deleteUserById, updateUserById, contact, id}:IContactF
             {errors.phone && <span className="show-error">Type a valid phone number</span>}
           <div className="edit-info-buttons">
             <Link href="/">
-              <Button variant="contained" color="warning" size='large' endIcon={<CancelIcon />}>
-                Cancel
+              <Button variant="contained" size='large' endIcon={<KeyboardBackspaceIcon />}>
+                GO BACK
               </Button>
             </Link>
-              <Button type="submit" variant="contained" size='large' endIcon={<SendIcon />}>
+              <Button type="submit" color="success" variant="contained" size='large' endIcon={<SendIcon />}>
                 Save
               </Button>
             <Link href="/">

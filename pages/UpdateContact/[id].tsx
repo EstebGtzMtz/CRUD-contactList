@@ -4,14 +4,14 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EditContactForm from '../../components/EditContact/EditContactForm';
 import EditContactHeader from '../../components/EditContact/EditContactHeader';
-import { IContactsResults } from '../../interfaces/interfaces';
+import { IContactsResults, IContactsState } from '../../interfaces/interfaces';
 import {getContactById} from '../../redux/actions';
 
 const UpdateContact = () => {
   const dispatch = useDispatch();
   const router = useRouter()
   const { id } = router.query;
-  const contact:IContactsResults = useSelector((state:any) => state?.contacts.currentContact);
+  const contact = useSelector((state:IContactsState) => state?.contacts.currentContact);
   const [open, setOpen] = useState(false);
   
   useEffect(() => {

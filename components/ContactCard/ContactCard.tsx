@@ -15,7 +15,7 @@ const ContactCard = ({firstName, lastName='S', phone, id}:IContactsResults) => {
         <div className="contact-card-row-info">
           <h3>{firstName}</h3>
           <h4>
-            {phone}
+            Phone: {phone}
           </h4>
         </div>
       </div>
