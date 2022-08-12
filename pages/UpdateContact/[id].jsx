@@ -11,7 +11,7 @@ const UpdateContact = () => {
   const dispatch = useDispatch();
   const router = useRouter()
   const { id } = router.query;
-  const contact = useSelector((state:IContactsState) => state?.contacts.currentContact);
+  const contact = useSelector((state) => state?.contacts.currentContact);
   const [open, setOpen] = useState(false);
   
   useEffect(() => {
