@@ -18,7 +18,22 @@ export const getAllContacts = ( page=150, perPage=10):any => async (dispatch:any
       fetching: false
     }) 
   } catch (error) {
-    
+    console.log(error)
+  }
+}
+
+export const getContactById = (id:string|undefined) => async(dispatch:any) => {
+  try {
+    // dispatch({
+    //   type:ActionTypes.GET_CONTACT_BY_ID
+    // })
+    const {data}: IUserByID = await service.get(`${baseURL}/${id}`);
+    dispatch({
+      type: ActionTypes.GET_CONTACT_BY_ID,
+      currentContact: data,
+    })
+  } catch (error) {
+    console.log(error)
   }
 }
 
@@ -35,9 +50,10 @@ export const deleteUserById = (id:string) => async (dispatch:any) => {
 
 export const updateUserById = (id:string, infoToUpdate: INewContactSubmit ) => async (dispatch: any) => {
   try {
-    await service.put(`${baseURL}/${id}`, infoToUpdate);
+    const {data}:IUserByID = await service.put(`${baseURL}/${id}`, infoToUpdate);
     dispatch({
       type: ActionTypes.UPDATE_CONTACT_BY_ID,
+      currentContact: data
     })
   } catch (error) {
     console.log(error)

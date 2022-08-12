@@ -56,6 +56,7 @@ export interface IAction {
   currentPage: number
   perPage: number
   fetching: boolean
+  currentContact: IContactsResults
 }
 
 export interface IActionsTypes {
@@ -64,7 +65,8 @@ export interface IActionsTypes {
   GET_CONTACT_BY_ID: string,
   DELETE_CONTACT_BY_ID:string,
   GET_ALL_CONTACTS_SUCCESS: string,
-  UPDATE_CONTACT_BY_ID: string
+  UPDATE_CONTACT_BY_ID: string,
+  GET_CONTACT_BY_ID_SUCCESS: string
 }
 
 
